@@ -1,5 +1,9 @@
 package com.example.lclbackend.controller
 
+import jakarta.validation.Valid
+import jakarta.validation.constraints.Email
+import jakarta.validation.constraints.NotBlank
+import jakarta.validation.constraints.Size
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -12,17 +16,23 @@ import org.springframework.web.bind.annotation.RestController
 class AccountController {
 
     data class LoginRequest(
-        val email: String,
-        val password: String
+
+        // NOTE:
+        // email や password を nullable にしているのは、バリデーションエラーを正しく検出するため。
+        // もし非nullable（String）にすると、リクエストでフィールドが欠落していた場合、
+        // Bean Validation による検証（@NotBlank など）に到達する前に Jackson のデシリアライズエラー（Json parse error）になる。
+        // そのため、null を許容しつつ @NotBlank や でバリデーションする構成にしている。
+        @field:NotBlank(message = "メールアドレスは必須です")
+        @field:Email(message = "メールアドレスの形式が不正です")
+        val email: String?,
+
+        @field:NotBlank(message = "パスワードは必須です")
+        @field:Size(min = 8, message = "パスワードは8文字以上で入力してください")
+        val password: String?
     )
 
     @PostMapping("/accounts")
-    fun login(@RequestBody request: LoginRequest): ResponseEntity<String> {
-        // 認証処理はここで行う（仮の実装）
-        return if (request.email == "test@example.com" && request.password == "password123") {
-            ResponseEntity.ok("ログイン成功")
-        } else {
-            ResponseEntity.status(401).body("認証失敗")
-        }
+    fun login(@Valid @RequestBody request: LoginRequest): ResponseEntity<String> {
+        return ResponseEntity.ok("ログイン成功")
     }
 }
