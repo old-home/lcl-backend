@@ -1,4 +1,4 @@
-package com.example.lclbackend
+package com.graywings.lcl
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
@@ -9,5 +9,4 @@ class LclBackendApplicationTests {
     @Test
     fun contextLoads() {
     }
-
 }

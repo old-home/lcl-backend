@@ -1,1 +1,1 @@
-rootProject.name = "lcl-backend"
+rootProject.name = "lcl"

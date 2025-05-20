@@ -1,4 +1,4 @@
-package com.example.lclbackend.controller
+package com.graywings.lcl.controller
 
 import jakarta.validation.Valid
 import jakarta.validation.constraints.Email
@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.Size
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -34,5 +35,10 @@ class AccountController {
     @PostMapping("/accounts")
     fun login(@Valid @RequestBody request: LoginRequest): ResponseEntity<String> {
         return ResponseEntity.ok("ログイン成功")
+    }
+
+    @GetMapping("/accounts")
+    fun test(request: LoginRequest): ResponseEntity<String> {
+        return ResponseEntity.ok("Hello")
     }
 }

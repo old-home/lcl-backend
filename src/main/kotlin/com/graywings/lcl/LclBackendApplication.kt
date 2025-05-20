@@ -1,4 +1,4 @@
-package com.example.lclbackend
+package com.graywings.lcl
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
