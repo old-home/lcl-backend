@@ -56,7 +56,7 @@ class AccountController(private val registerAccountAction: RegisterAccountAction
 
     @PostMapping("/accounts")
     fun registerAccount(@Valid @RequestBody request: RegisterAccountRequest): ResponseEntity<String> {
-        registerAccountAction.register(request.email, request.password);
+        registerAccountAction.handle(request.email, request.password);
         return ResponseEntity.ok("ユーザー登録成功");
     }
 
