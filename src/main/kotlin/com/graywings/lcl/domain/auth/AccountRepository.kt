@@ -1,6 +1,5 @@
-package com.graywings.lcl.domain.auth.repository
+package com.graywings.lcl.domain.auth
 
-import com.graywings.lcl.domain.auth.domain.Account
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

@@ -1,7 +1,8 @@
 package com.graywings.lcl.domain.auth.repository
 
 import com.graywings.lcl.config.TestDatabaseConfig
-import com.graywings.lcl.domain.auth.domain.Account
+import com.graywings.lcl.domain.auth.Account
+import com.graywings.lcl.domain.auth.AccountRepository
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
